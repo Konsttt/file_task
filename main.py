@@ -82,8 +82,8 @@ def write_sort_file(dir_, extension_, encoding_):
     ROOT_PATH = os.getcwd()
     DIR = dir_
     full_path_result = os.path.join(ROOT_PATH, DIR, 'result.txt')
-    f = open(full_path_result, 'w', encoding=encoding_)
-    f.write('')  # Первоначальная очистка очистка файла result.txt
+    with open(full_path_result, 'w', encoding=encoding_) as f:
+        f.write('')  # Первоначальная очистка очистка файла result.txt
     with open(full_path_result, 'a', encoding=encoding_) as result:
         count = 0
         for k, v in sort_dict_file_size.items():
@@ -100,6 +100,22 @@ def write_sort_file(dir_, extension_, encoding_):
 
 
 write_sort_file('task_sort_file', '.txt', 'utf-8')  # Результат в папке task_sort_file текущего каталога.
+
+
+# Очистка файла result.txt (дополнительно, для проверок)
+def clear_file(dir_, filename_, encoding_):
+    ROOT_PATH = os.getcwd()
+    DIR = dir_
+    filename = filename_
+    full_path_result = os.path.join(ROOT_PATH, DIR, filename)
+    with open(full_path_result, 'w', encoding=encoding_) as f:
+        f.write('')
+    print(f'Файл {filename} очищен от содержимого.')
+
+# Очистка result.txt
+# clear_file('task_sort_file', 'result.txt', 'utf-8')
+
+
 
 
 
