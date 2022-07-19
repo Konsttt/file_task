@@ -92,8 +92,7 @@ def write_sort_file(dir_, extension_, encoding_):
             with open(full_path_file, encoding=encoding_) as file:
                 result.write(k + '\n')
                 result.write(str(v) + '\n')
-                for s in file:
-                    result.write(s)
+                result.write(file.read())
             if count != len(sort_dict_file_size):
                 result.write('\n')  # После записи содержимого одного файла(кроме последнего) - перевод строки.
     return
